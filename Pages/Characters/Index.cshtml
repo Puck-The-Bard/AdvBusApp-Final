@@ -1,0 +1,90 @@
+@page
+@model FinalProject.Pages.Characters.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Character[0].CharacterName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Character[0].FlavorText)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Character[0].Health)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Character[0].Level)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Character[0].Strength)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Character[0].Dexterity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Character[0].Constitution)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Character[0].Intelligence)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Character[0].Wisdom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Character[0].Charasma)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Character) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CharacterName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlavorText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Health)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Level)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Strength)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dexterity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Constitution)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Intelligence)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Wisdom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Charasma)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.CharacterID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.CharacterID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.CharacterID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

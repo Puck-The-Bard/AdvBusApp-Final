@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Player.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace FinalProject
 {
@@ -31,8 +33,14 @@ namespace FinalProject
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+              services.AddDbContext<CharacterDbContext>(options =>
+                options.UseSqlite(Configuration.GetConnectionString("CharacterDbContext")));
+
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddDbContext<Context>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("Context")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
